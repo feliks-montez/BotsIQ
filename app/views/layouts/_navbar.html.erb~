@@ -16,6 +16,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><%= link_to "Projects", projects_path %></li>
+          <li><%= link_to "Members", teams_path %></li>
           <li><%= link_to "Members", users_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

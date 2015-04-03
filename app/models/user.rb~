@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
+  belongs_to :team
   before_save :process_email
   
-  has_secure_password 
-  
-  VALID_EMAIL_REGEX = /\A.+@.+\z/i
+  has_secure_password
 
   validates :name,     presence: true
   validates :position, presence: true  

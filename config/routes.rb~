@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  get 'teams/index'
+
+  get 'teams/show'
+
+  get 'teams/new'
+
+  get 'teams/edit'
+
   root 'projects#index'
   
-  get '/signin' => 'sessions#new', as: 'signin'
-  get '/signup' => 'users#new',    as: 'signup'
+  get '/signin'  => 'sessions#new',     as: 'signin'
+  get '/signup'  => 'users#new',        as: 'signup'
+  get '/signout' => 'sessions#destroy', as: 'signout'
   
   resources :projects
   resources :users
