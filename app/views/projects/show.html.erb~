@@ -1,0 +1,4 @@
+<h1><%= @project.name %></h1>
+<h3>Deadline: <%= @project.deadline %></h3>
+<%= check_box_tag :completed, 'completed', @project.completed %>
+<%= link_to "Edit Project", edit_project_path(@project) %>

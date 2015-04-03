@@ -1,0 +1,5 @@
+class AddCompleteDefaultToProjects < ActiveRecord::Migration
+  self.up
+    change_column :projects, :complete, :boolean, default: false
+  end
+end
