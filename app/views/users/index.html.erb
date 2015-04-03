@@ -1,0 +1,9 @@
+<h1>Listing Users</h1>
+<ol>
+  <% @users.each do |user| %>
+    <li>
+      <p><%= link_to user.name, user %> (<%= user.position %>) | <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </li>
+  <% end %>
+</ol>
+<%= link_to 'New User', new_user_path %>

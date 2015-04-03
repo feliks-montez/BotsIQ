@@ -12,7 +12,7 @@
   
   <div class="form-group">
     <%= f.label :completed %>
-    <%= f.check_box :completed, @project.completed %>
+    <%= f.check_box :completed %>
   </div>
   
   <%= f.submit "Update Project", class: 'btn btn-primary' %>
