@@ -1,0 +1,3 @@
+<h3>Name: <%= @user.name %></h3>
+<p>Team: <%= @user.team.name %></p>
+<p>Position: <%= @user.position.name %></p>

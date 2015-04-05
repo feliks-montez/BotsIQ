@@ -1,0 +1,9 @@
+<h1>Positions</h1>
+<ol>
+  <%= @positions.each do |position| %>
+    <li>
+      <h3><%= position.name %></h3>
+    </li>
+  <% end %>
+</ol>
+<%= link_to "Add Position", new_position_path %>

@@ -15,8 +15,16 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params.require(:team).permit(:name))
     if @team.save
-      redirect_to @team
-    else
+      @captain = User.new(name: params[:captain_name], email: params[:captain_email], password: params[:captain_password], password_confirmation: params[:captain_confirm_password], team_id: @team.id)
+      @position = Position.new(name: "Captain", team_id: @team.id)
+      @captain.position = @position
+      if @position.save and @captain.save
+        sign_in @captain
+        redirect_to @team
+      else  
+        render 'new'
+      end
+    else  
       render 'new'
     end
   end

@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   
+  def positions
+    ['Captain', 'Treasurer', 'Member']
+  end
+  
   def sign_in(user)
     session[:user_id] = user.id
   end

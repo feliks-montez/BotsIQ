@@ -1,2 +1,17 @@
 <h1><%= @team.name %></h1>
-<%= link_to "Edit Team", edit_project_path(@team) %>
+<h3>Positions</h3>
+<ol>
+  <% @team.positions.each do |position| %>
+    <li><%= position.name %></li>
+  <% end %>
+</ol>
+<h3>Members</h3>
+<ol>
+  <% @team.users.all.each do |user| %>
+    <li>
+      <p><%= user.name %>: <%= user.position.name %></p>
+    </li>
+  <% end %>
+</ol>
+<%= link_to "Add Position", new_position_path(@team) %><br>
+<%= link_to "Add Member", new_user_path(@team) %>

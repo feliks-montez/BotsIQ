@@ -10,15 +10,12 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= f.hidden_field :team_id, value: @team.id %>
 
   <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :position %><br>
-    <%= f.text_field :position %>
   </div>
   
   <div class="form-group">
@@ -34,6 +31,16 @@
   <div class="form-group">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <!--div class="form-group">
+    <%#= f.label :team %><br>
+    <%#= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %>
+  </div-->
+  
+  <div class="form-group">
+    <%= f.label :position %><br>
+    <%= f.select :position_id, options_from_collection_for_select(@team.positions.all, :id, :name) %>
   </div>
   
   <%= f.submit %>
