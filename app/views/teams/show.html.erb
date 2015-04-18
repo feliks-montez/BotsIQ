@@ -1,17 +1,36 @@
 <h1><%= @team.name %></h1>
-<h3>Positions</h3>
-<ol>
-  <% @team.positions.each do |position| %>
-    <li><%= position.name %></li>
-  <% end %>
-</ol>
-<h3>Members</h3>
-<ol>
-  <% @team.users.all.each do |user| %>
-    <li>
-      <p><%= user.name %>: <%= user.position.name %></p>
-    </li>
-  <% end %>
-</ol>
-<%= link_to "Add Position", new_position_path(@team) %><br>
-<%= link_to "Add Member", new_user_path(@team) %>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Current Projects</h3>
+    <ol>
+      <% @team.projects.where(completed: false).each do |project| %>
+        <li>
+          <h3><%= link_to team_project_path(@team, project) do %><%= project.name %><% end %></h3>
+          <p><%= project.deadline %></p>
+          <p>Completed: <%= check_box_tag :completed, 'completed', project.completed %></p>
+        </li>
+      <% end %>
+    </ol>
+    <%= link_to "New Project", new_team_project_path(@team) %><br>
+    <%= link_to "All Projects", team_projects_path(@team) %>
+  </div>
+  <div class="col-md-6">
+    <h3>Positions</h3>
+    <ol>
+      <% @team.positions.each do |position| %>
+        <li><%= position.name %></li>
+      <% end %>
+    </ol>
+    <%= link_to "Add Position", new_team_position_path(@team) %>
+    
+    <h3>Members</h3>
+    <ol>
+      <% @team.users.all.each do |user| %>
+        <li>
+          <p><%= user.name %>: <%= user.position.name %></p>
+        </li>
+      <% end %>
+    </ol>
+    <%= link_to "Add Member", new_team_user_path(@team) %>
+  </div>
+</div>

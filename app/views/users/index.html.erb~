@@ -2,8 +2,14 @@
 <ol>
   <% @users.each do |user| %>
     <li>
-      <p><%= link_to user.name, user_path(user.team.id, user) %> (<%= user.team.name %>) | <%= link_to 'Destroy', user_path(user.team.id, user), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <p>
+        <%= link_to user.name, team_user_path(user.team.id, user) %> 
+          (<%= user.position.name %>)
+          <% if current_user.position.name == "Captain" %>
+            | <%= link_to 'Destroy', team_user_path(user.team.id, user), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      </p>
     </li>
   <% end %>
 </ol>
-<%= link_to 'New Member', new_user_path %>
+<%= link_to 'New Member', new_team_user_path %>

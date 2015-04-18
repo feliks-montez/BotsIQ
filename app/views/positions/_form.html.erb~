@@ -1,4 +1,4 @@
-<%= form_for @position, action: positions_path, method: 'post' do |f| %>
+<%= form_for @position do |f| %>
   <% if @position.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@position.errors.count, "error") %> prohibited this position from being saved:</h2>

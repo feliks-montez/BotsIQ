@@ -2,7 +2,6 @@ class PositionsController < ApplicationController
   before_action :set_position, only: [:edit, :update, :destroy]
 
   def index
-    @team = Team.find(params[:team_id])
     @positions = @team.positions.all
   end
   
@@ -12,7 +11,6 @@ class PositionsController < ApplicationController
   end
   
   def create
-    @team = Team.find(params[:team_id])
     @position = Position.new(position_params)
     @position.team = @team
     if @position.save

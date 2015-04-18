@@ -2,10 +2,10 @@
 <ol>
   <% @projects.each do |project| %>
     <li>
-      <h3><%= link_to project do %><%= project.name %><% end %></h3>
+      <h3><% if project.completed %><s><% end %><%= link_to team_project_path(@team, project) do %><%= project.name %><% end %><% if project.completed %></s><% end %></h3>
       <p><%= project.deadline %></p>
       <p>Completed: <%= check_box_tag :completed, 'completed', project.completed %></p>
     </li>
   <% end %>
 </ol>
-<%= link_to "New Project", new_project_path %>
+<%= link_to "New Project", new_team_project_path %>

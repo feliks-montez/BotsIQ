@@ -3,10 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  
-  def positions
-    ['Captain', 'Treasurer', 'Member']
-  end
+  before_action :set_team
   
   def sign_in(user)
     session[:user_id] = user.id
@@ -22,5 +19,11 @@ class ApplicationController < ActionController::Base
   
   def sign_out
     session[:user_id] = nil
+  end
+  
+  def set_team
+    if params[:team_id]
+      @team = Team.find(params[:team_id])
+    end
   end
 end
